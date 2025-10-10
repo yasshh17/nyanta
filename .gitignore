@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Environment variables
+.env
+.env.local
+
+# IDEs
+.vscode/
+
+# OS
+.DS_Store
+
+# Project specific
+data/
+documents/
+*.pdf
+*.docx
+faiss_index/
+
+# Logs
+*.log
+
+# Streamlit
+.streamlit/secrets.toml
