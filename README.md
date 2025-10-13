@@ -411,7 +411,6 @@ Open to roles in AI engineering and ML infrastructure.
 
 ---
 
-<div align="center">
-⭐ Star this repo if you find it useful!
-Built by Yash Tambakhe
-</div>
+⭐ If you find this project useful, [star this repo](https://github.com/yasshh17/nyanta)!
+
+Built by **Yash Tambakhe**
