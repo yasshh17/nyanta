@@ -15,8 +15,6 @@ Nyanta is an AI-powered personal knowledge assistant that turns documents into a
 
 **[Live Demo](https://nyanta.streamlit.app)** • **[Documentation](#quick-start)** • **[Report Issue](https://github.com/yasshh17/nyanta/issues)**
 
-![Nyanta Interface](docs/demo.png)
-
 *Upload documents, ask questions, get answers with citations—all powered by AI*
 
 </div>
