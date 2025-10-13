@@ -14,10 +14,20 @@ class RAGChain:
     """RAG chain for answering questions with citations."""
     
     def __init__(self, model_name: str = "llama-3.3-70b-versatile"):
+        # Get API key from either .env or Streamlit secrets
+        try:
+            import streamlit as st
+            if hasattr(st, 'secrets') and 'GROQ_API_KEY' in st.secrets:
+                groq_key = st.secrets['GROQ_API_KEY']
+            else:
+                groq_key = os.getenv('GROQ_API_KEY')
+        except:
+            groq_key = os.getenv('GROQ_API_KEY')
+        
         self.llm = ChatGroq(
             model=model_name,
             temperature=0.1,
-            groq_api_key=os.getenv("GROQ_API_KEY")
+            groq_api_key=groq_key
         )
         
         self.prompt_template = ChatPromptTemplate.from_messages([

@@ -202,7 +202,16 @@ db = get_database()
 def check_pinecone_documents():
     """Check if documents exist in Pinecone."""
     try:
-        pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
+        # Get API key from either .env or Streamlit secrets
+        try:
+            if hasattr(st, 'secrets') and 'PINECONE_API_KEY' in st.secrets:
+                pinecone_key = st.secrets['PINECONE_API_KEY']
+            else:
+                pinecone_key = os.getenv('PINECONE_API_KEY')
+        except:
+            pinecone_key = os.getenv('PINECONE_API_KEY')
+        
+        pc = Pinecone(api_key=pinecone_key)
         index = pc.Index("rag-chatbot")
         stats = index.describe_index_stats()
         vector_count = stats.get('total_vector_count', 0)
