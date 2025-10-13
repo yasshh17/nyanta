@@ -411,6 +411,14 @@ Open to roles in AI engineering and ML infrastructure.
 
 ---
 
-⭐ If you find this project useful, [star this repo](https://github.com/yasshh17/nyanta)!
+<div align="center">
 
-Built by **Yash Tambakhe**
+⭐ **[Star this repo](https://github.com/yasshh17/nyanta) if you find it useful!**
+
+**Built by Yash Tambakhe**
+
+[LinkedIn](https://www.linkedin.com/in/yash-tambakhe/) • [GitHub](https://github.com/yasshh17) • [Email](mailto:yashtambakhe@gmail.com)
+
+*Transform documents into conversations with AI*
+
+</div>
