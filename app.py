@@ -1,6 +1,9 @@
 """Professional RAG Chatbot"""
 
 import streamlit as st
+from dotenv import load_dotenv
+
+load_dotenv()
 from src.document_loader import load_and_chunk
 from src.vector_store import PineconeVectorStore
 from src.rag_chain import RAGChain
@@ -202,14 +205,14 @@ db = get_database()
 def check_pinecone_documents():
     """Check if documents exist in Pinecone."""
     try:
-        # Get API key from either .env or Streamlit secrets
-        try:
-            if hasattr(st, 'secrets') and 'PINECONE_API_KEY' in st.secrets:
-                pinecone_key = st.secrets['PINECONE_API_KEY']
-            else:
-                pinecone_key = os.getenv('PINECONE_API_KEY')
-        except:
-            pinecone_key = os.getenv('PINECONE_API_KEY')
+        # Get API key (prioritize .env/os.getenv to avoid Streamlit secrets warning)
+        pinecone_key = os.getenv('PINECONE_API_KEY')
+        if not pinecone_key:
+            try:
+                if hasattr(st, 'secrets') and 'PINECONE_API_KEY' in st.secrets:
+                    pinecone_key = st.secrets['PINECONE_API_KEY']
+            except:
+                pass
         
         pc = Pinecone(api_key=pinecone_key)
         index = pc.Index("rag-chatbot")
@@ -317,7 +320,7 @@ with st.sidebar:
                         st.toast(f"✓ {file.name} processed", icon="✅")
                         
                     except Exception as e:
-                        st.toast(f"Error: {file.name}", icon="❌")
+                        st.toast(f"Error: {file.name} - {str(e)}", icon="❌")
                 
                 if all_chunks:
                     status.markdown(f"🔮 Creating embeddings for **{len(all_chunks):,} chunks**...")

@@ -16,15 +16,15 @@ class PineconeVectorStore:
     def __init__(self, index_name: str = "rag-chatbot"):
         self.index_name = index_name
         
-        # Get API key from either .env or Streamlit secrets
-        try:
-            import streamlit as st
-            if hasattr(st, 'secrets') and 'OPENAI_API_KEY' in st.secrets:
-                openai_key = st.secrets['OPENAI_API_KEY']
-            else:
-                openai_key = os.getenv('OPENAI_API_KEY')
-        except:
-            openai_key = os.getenv('OPENAI_API_KEY')
+        # Get API key (prioritize .env/os.getenv to avoid Streamlit secrets warning)
+        openai_key = os.getenv('OPENAI_API_KEY')
+        if not openai_key:
+            try:
+                import streamlit as st
+                if hasattr(st, 'secrets') and 'OPENAI_API_KEY' in st.secrets:
+                    openai_key = st.secrets['OPENAI_API_KEY']
+            except:
+                pass
         
         self.embeddings = OpenAIEmbeddings(
             model="text-embedding-3-small",
