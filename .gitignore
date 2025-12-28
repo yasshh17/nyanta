@@ -31,3 +31,4 @@ faiss_index/
 
 # Streamlit
 .streamlit/secrets.toml
+*.db
