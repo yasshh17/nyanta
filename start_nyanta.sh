@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Nyanta Startup Script
 echo "Starting Nyanta..."
 echo ""
 
@@ -19,10 +18,8 @@ else
     fi
 fi
 
-# Verify correct Python
 echo "Using Python: $(which python)"
 echo "Python version: $(python --version)"
 echo ""
 
-# Run application
 python -m streamlit run app.py
