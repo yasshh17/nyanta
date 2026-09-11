@@ -396,7 +396,7 @@ with st.sidebar:
     with st.expander("⚙️ Tech Stack", expanded=False):
         st.markdown("""
         **AI & ML**
-        - LLM: Groq Llama 3.3 70B
+        - LLM: Groq gpt-oss-120b
         - Embeddings: OpenAI text-embedding-3
         - Vector DB: Pinecone Serverless
 

@@ -49,9 +49,10 @@ Groq LLM → Cited Answer
 | **Semantic Search** | Understands meaning, not just keywords (vector similarity) |
 | **Multi-Format** | PDF, TXT, DOCX support with intelligent parsing |
 | **Advanced RAG** | Complete pipeline: chunking → embeddings → retrieval → generation |
-| **Source Citations** | Every answer includes document references and chunk IDs |
+| **Source Citations** | Every answer includes document references, chunk IDs, and a relevance score |
 | **Persistent Sessions** | Chat history survives page refreshes (SQLite) |
 | **Real-Time Stats** | Live dashboard: vectors, documents, chunks |
+| **Knowledge Base Reset** | One-click, confirmed deletion of all indexed vectors and documents |
 
 **Technical Highlights:**
 - Context-preserving semantic chunking (1000 tokens, 200 overlap)
@@ -65,7 +66,7 @@ Groq LLM → Cited Answer
 ## Tech Stack
 
 **AI/ML**
-- **LLM:** Groq (Llama 3.3 70B) - Free, fast inference
+- **LLM:** Groq (openai/gpt-oss-120b) - Free, fast inference
 - **Embeddings:** OpenAI text-embedding-3-small (1536-dim)
 - **Vector DB:** Pinecone Serverless (100K free vectors)
 - **Framework:** LangChain 0.3 (RAG orchestration)
@@ -239,7 +240,7 @@ Query → Cosine similarity → Top-K chunks → Groq LLM → Answer with citati
 **Key Design Decisions:**
 1. **RAG vs Fine-Tuning:** Real-time knowledge updates, transparent citations, low cost  
 2. **Cloud Vector DB (Pinecone):** Stateless deployment, scaling, production-ready  
-3. **Groq for Generation:** 650–750 tokens/s, free tier, Llama 3.3 quality  
+3. **Groq for Generation:** 650–750 tokens/s, free tier, gpt-oss-120b quality  
 4. **SQLite Persistence:** Zero-config, ACID-compliant, upgradeable  
 
 
